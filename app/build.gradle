@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+//    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.zxn.tablayoutsamples"
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    compile 'com.android.support:appcompat-v7:25.1.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation project(':expand-tablayout')
+
+    //--->support 3.0+
+//    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //--->support 2.2+
+//    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar'
+//    compile 'com.nineoldandroids:library:2.4.0'
+}

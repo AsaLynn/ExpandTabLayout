@@ -9,13 +9,13 @@
     * 新增支持未读消息显示
     * 新增方法for懒癌患者
     
-    ```java
-        /** 关联ViewPager,用于不想在ViewPager适配器中设置titles数据的情况 */
-        public void setViewPager(ViewPager vp, String[] titles)
-        
-        /** 关联ViewPager,用于连适配器都不想自己实例化的情况 */
-        public void setViewPager(ViewPager vp, String[] titles, FragmentActivity fa, ArrayList<Fragment> fragments) 
-    ```
+```java
+/** 关联ViewPager,用于不想在ViewPager适配器中设置titles数据的情况 */
+public void setViewPager(ViewPager vp, String[] titles)
+
+/** 关联ViewPager,用于连适配器都不想自己实例化的情况 */
+public void setViewPager(ViewPager vp, String[] titles, FragmentActivity fa, ArrayList<Fragment> fragments) 
+```
 
 * CommonTabLayout:不同于SlidingTabLayout对ViewPager依赖,它是一个不依赖ViewPager可以与其他控件自由搭配使用的TabLayout.
     * 支持多种Indicator显示器,以及Indicator动画
@@ -23,10 +23,10 @@
     * 支持Icon以及Icon位置
     * 新增方法for懒癌患者
     
-    ```java
-        /** 关联数据支持同时切换fragments */
-        public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm, int containerViewId, ArrayList<Fragment> fragments)
-    ```
+```java
+/** 关联数据支持同时切换fragments */
+public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm, int containerViewId, ArrayList<Fragment> fragments)
+```
 
 * SegmentTabLayout
 
@@ -37,13 +37,22 @@
 
 ![](https://github.com/H07000223/FlycoTabLayout/blob/master/preview_3.gif)
 
+![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image01)
+
+![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image02)
+
+![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image03)
+
+![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image04)
+
+![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image05)
 
 ## Gradle
 
 ```
 dependencies{
-    compile 'com.android.support:support-v4:23.1.1'
-    compile 'com.zxn.tablayout:expand-tablayout:1.0.0'
+    implementation 'com.zxn.tablayout:expand-tablayout:1.0.2'
+    //compile 'com.zxn.tablayout:expand-tablayout:1.0.0'
 }
 ```
 
@@ -90,3 +99,13 @@ dependencies{
 
 ## Thanks
 *   [PagerSlidingTabStrip](https://github.com/jpardogo/PagerSlidingTabStrip)
+*   [FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
+
+## 标签
+
+expand-tablayout:1.0.2
+```
+git tag -a v1.0.2 -m 'expand-tablayout1.0.2:'
+git push origin v1.0.2
+git tag
+```

@@ -28,7 +28,7 @@ def siteUrl = 'https://github.com/zhang721688/ExpandTabLayout'
 def gitUrl = 'https://github.com/zhang721688/ExpandTabLayout.git'
 def libName = "expand-tablayout"
 group = "com.zxn.tablayout"
-version = "1.0.1"
+version = "1.0.2"
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'

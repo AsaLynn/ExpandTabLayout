@@ -1,20 +1,16 @@
 package com.zxn.tablayoutsamples.ui;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.zxn.tablayout.CommonTabLayout;
 import com.zxn.tablayout.listener.CustomTabEntity;
-import com.zxn.tablayout.listener.OnTabSelectListener;
-import com.zxn.tablayout.utils.UnreadMsgUtils;
-import com.zxn.tablayout.widget.MsgView;
 import com.zxn.tablayoutsamples.R;
 import com.zxn.tablayoutsamples.entity.TabEntity;
 import com.zxn.tablayoutsamples.utils.ViewFindUtils;

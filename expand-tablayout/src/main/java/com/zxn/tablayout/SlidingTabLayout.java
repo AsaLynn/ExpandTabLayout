@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zxn.tablayout.listener.OnTabSelectListener;
+import com.zxn.tablayout.utils.MsgLength;
 import com.zxn.tablayout.utils.UnreadMsgUtils;
 import com.zxn.tablayout.widget.MsgView;
 
@@ -777,6 +778,25 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         MsgView tipView = (MsgView) tabView.findViewById(R.id.rtv_msg_tip);
         if (tipView != null) {
             UnreadMsgUtils.show(tipView, num);
+
+            if (mInitSetMap.get(position) != null && mInitSetMap.get(position)) {
+                return;
+            }
+
+            setMsgMargin(position, 4, 2);
+            mInitSetMap.put(position, true);
+        }
+    }
+
+    public void showMsg(int position, int num, @MsgLength int maxLength) {
+        if (position >= mTabCount) {
+            position = mTabCount - 1;
+        }
+
+        View tabView = mTabsContainer.getChildAt(position);
+        MsgView tipView = (MsgView) tabView.findViewById(R.id.rtv_msg_tip);
+        if (tipView != null) {
+            UnreadMsgUtils.show(tipView, num,maxLength);
 
             if (mInitSetMap.get(position) != null && mInitSetMap.get(position)) {
                 return;

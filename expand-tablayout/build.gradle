@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.0.3"
     }
     buildTypes {
         release {
@@ -28,7 +28,7 @@ def siteUrl = 'https://github.com/zhang721688/ExpandTabLayout'
 def gitUrl = 'https://github.com/zhang721688/ExpandTabLayout.git'
 def libName = "expand-tablayout"
 group = "com.zxn.tablayout"
-version = "1.0.2"
+version = "1.0.3"
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'

@@ -11,6 +11,8 @@ import android.view.View;
 
 import com.zxn.tablayout.SegmentTabLayout;
 import com.zxn.tablayout.listener.OnTabSelectListener;
+import com.zxn.tablayout.utils.IUnreadMsg;
+import com.zxn.tablayout.utils.UnreadMsgUtils;
 import com.zxn.tablayout.widget.MsgView;
 import com.zxn.tablayoutsamples.R;
 import com.zxn.tablayoutsamples.utils.ViewFindUtils;
@@ -31,6 +33,8 @@ public class SegmentTabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segment_tab);
+
+        //UnreadMsgUtils.show(null,1, IUnreadMsg.THOUSAND_LENGTH);
 
         for (String title : mTitles_3) {
             mFragments.add(SimpleCardFragment.getInstance("Switch ViewPager " + title));

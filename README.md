@@ -51,6 +51,7 @@ public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm
 
 ```
 dependencies{
+    implementation 'com.zxn.tablayout:expand-tablayout:1.0.3'
     implementation 'com.zxn.tablayout:expand-tablayout:1.0.2'
     //compile 'com.zxn.tablayout:expand-tablayout:1.0.0'
 }
@@ -102,6 +103,13 @@ dependencies{
 *   [FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
 
 ## 标签
+
+expand-tablayout:1.0.3
+```
+git tag -a v1.0.3 -m 'expand-tablayout1.0.3:增加设置消息最大值方法.'
+git push origin v1.0.3
+git tag
+```
 
 expand-tablayout:1.0.2
 ```

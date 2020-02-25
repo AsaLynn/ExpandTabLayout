@@ -104,6 +104,13 @@ dependencies{
 
 ## 标签
 
+expand-tablayout:1.0.4
+```
+git tag -a v1.0.4 -m 'expand-tablayout1.0.4:修复bug'
+git push origin v1.0.4
+git tag
+```
+
 expand-tablayout:1.0.3
 ```
 git tag -a v1.0.3 -m 'expand-tablayout1.0.3:增加设置消息最大值方法.'

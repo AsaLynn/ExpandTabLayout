@@ -29,6 +29,7 @@ import com.zxn.tablayout.utils.UnreadMsgUtils;
 import com.zxn.tablayout.widget.MsgView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SegmentTabLayout extends FrameLayout implements ValueAnimator.AnimatorUpdateListener {
     private Context mContext;
@@ -171,7 +172,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     }
 
     /** 关联数据支持同时切换fragments */
-    public void setTabData(String[] titles, FragmentActivity fa, int containerViewId, ArrayList<Fragment> fragments) {
+    public void setTabData(String[] titles, FragmentActivity fa, int containerViewId, List<Fragment> fragments) {
         mFragmentChangeManager = new FragmentChangeManager(fa.getSupportFragmentManager(), containerViewId, fragments);
         setTabData(titles);
     }

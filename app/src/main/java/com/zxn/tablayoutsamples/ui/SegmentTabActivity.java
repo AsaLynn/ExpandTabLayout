@@ -46,12 +46,14 @@ public class SegmentTabActivity extends AppCompatActivity {
 
         mDecorView = getWindow().getDecorView();
 
+        SegmentTabLayout tabLayout_0 = ViewFindUtils.find(mDecorView, R.id.tl_0);
         SegmentTabLayout tabLayout_1 = ViewFindUtils.find(mDecorView, R.id.tl_1);
         SegmentTabLayout tabLayout_2 = ViewFindUtils.find(mDecorView, R.id.tl_2);
         mTabLayout_3 = ViewFindUtils.find(mDecorView, R.id.tl_3);
         SegmentTabLayout tabLayout_4 = ViewFindUtils.find(mDecorView, R.id.tl_4);
         SegmentTabLayout tabLayout_5 = ViewFindUtils.find(mDecorView, R.id.tl_5);
 
+        tabLayout_0.setTabData(mTitles);
         tabLayout_1.setTabData(mTitles);
         tabLayout_2.setTabData(mTitles_2);
         tl_3();

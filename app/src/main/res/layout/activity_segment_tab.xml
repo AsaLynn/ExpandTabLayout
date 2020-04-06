@@ -12,6 +12,23 @@
         android:orientation="vertical">
 
         <com.zxn.tablayout.SegmentTabLayout
+            android:id="@+id/tl_0"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            tl:tl_indicator_bounce_enable="false"
+            android:outlineSpotShadowColor="@color/colorPrimary"
+            tl:tl_divider_color="@color/colorPrimary"
+            tl:tl_divider_width="50dp"
+            tl:tl_bar_color="#ffffff"
+            tl:tl_indicator_color="#2C97DE"
+            tl:tl_tab_space_equal="false"
+            tl:tl_indicator_corner_radius="8dp"
+            tl:tl_tab_padding="20dp"/>
+
+
+        <com.zxn.tablayout.SegmentTabLayout
             android:id="@+id/tl_1"
             android:layout_width="wrap_content"
             android:layout_height="32dp"

@@ -27,13 +27,13 @@ public class CommonTabActivity extends AppCompatActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private ArrayList<Fragment> mFragments2 = new ArrayList<>();
 
-    private String[] mTitles = {"首页", "消息", "联系人", "更多"};
+    private String[] mTitles = {"待接单", "配送异常", "进行中", "退款中","已完成"};
     private int[] mIconUnselectIds = {
             R.mipmap.tab_home_unselect, R.mipmap.tab_speech_unselect,
-            R.mipmap.tab_contact_unselect, R.mipmap.tab_more_unselect};
+            R.mipmap.tab_contact_unselect, R.mipmap.tab_more_unselect, R.mipmap.tab_more_unselect};
     private int[] mIconSelectIds = {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
-            R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
+            R.mipmap.tab_contact_select, R.mipmap.tab_more_select, R.mipmap.tab_more_select};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private View mDecorView;
     private ViewPager mViewPager;
@@ -47,6 +47,7 @@ public class CommonTabActivity extends AppCompatActivity {
     private CommonTabLayout mTabLayout_8;
     private CommonTabLayout mTabLayout_9;
     private CommonTabLayout mTabLayout_10;
+    private CommonTabLayout mTabLayout_msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,8 @@ public class CommonTabActivity extends AppCompatActivity {
 
         mTabLayout_10 = ViewFindUtils.find(mDecorView, R.id.tl_10);
 
+        mTabLayout_msg = ViewFindUtils.find(mDecorView, R.id.ctl_msg);
+
         mTabLayout_1.setTabData(mTabEntities);
         tl_2();
         mTabLayout_3.setTabData(mTabEntities, this, R.id.fl_change, mFragments2);
@@ -97,6 +100,7 @@ public class CommonTabActivity extends AppCompatActivity {
         mTabLayout_8.setTabData(mTabEntities);
         mTabLayout_9.setTabData(mTabEntities);
         mTabLayout_10.setTabData(mTabEntities);
+        mTabLayout_msg.setTabData(mTabEntities);
 
         mTabLayout_3.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -145,6 +149,23 @@ public class CommonTabActivity extends AppCompatActivity {
         if (rtv_2_3 != null) {
             rtv_2_3.setBackgroundColor(Color.parseColor("#6D8FB0"));
         }
+
+
+        mTabLayout_msg.showMsg(0, 55);
+        mTabLayout_msg.setMsgMargin(0, -10, 10);
+
+        //三位数
+        mTabLayout_msg.showMsg(1, 100);
+        mTabLayout_msg.setMsgMargin(1, -10, 10);
+
+        mTabLayout_msg.showMsg(2, 100);
+        mTabLayout_msg.setMsgMargin(2, -10, 10);
+
+        mTabLayout_msg.showMsg(3, 100);
+        mTabLayout_msg.setMsgMargin(3, -10, 10);
+
+        mTabLayout_msg.showMsg(4, 100);
+        mTabLayout_msg.setMsgMargin(4, -10, 10);
     }
 
     Random mRandom = new Random();

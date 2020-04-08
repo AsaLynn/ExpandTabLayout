@@ -31,7 +31,9 @@
         <activity
             android:name="com.zxn.tablayoutsamples.ui.ShadowTabActivity"
             android:screenOrientation="portrait"/>
-
+        <activity
+            android:name="com.zxn.tablayoutsamples.ui.SingleShadowTabActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

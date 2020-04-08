@@ -10,29 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vp_2"
-            android:layout_width="match_parent"
-            android:layout_height="84dp" />
-
-        <com.zxn.tablayout.CommonTabLayout
-            android:id="@+id/tl_9"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#ffffff"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            tl:tl_iconVisible="false"
-            tl:tl_indicator_color="#00bb9c"
-            tl:tl_indicator_corner_radius="5dp"
-            tl:tl_indicator_is_double_tab="true"
-            tl:tl_indicator_margin_left="5dp"
-            tl:tl_indicator_margin_right="5dp"
-            tl:tl_indicator_style="BLOCK_SHADOW"
-            tl:tl_indicator_unselect_color="#6000bb9c"
-            tl:tl_textUnselectColor="@color/c_020202"
-            tl:tl_textsize="14sp" />
-
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_10"
             android:layout_width="match_parent"

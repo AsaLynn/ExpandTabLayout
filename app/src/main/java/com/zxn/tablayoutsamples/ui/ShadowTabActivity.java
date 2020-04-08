@@ -24,6 +24,7 @@ public class ShadowTabActivity extends AppCompatActivity {
     private ArrayList<Fragment> mFragments2 = new ArrayList<>();
 
     private String[] mTitles = {"首页", "消息", "联系人", "更多"};
+    private String[] mTitles10 = {"外卖", "自取", "预订"};
     private String[] mContents = {"10", "5.5", "100", "20"};
     private int[] mIconUnselectIds = {
             R.mipmap.tab_home_unselect, R.mipmap.tab_speech_unselect,
@@ -32,9 +33,11 @@ public class ShadowTabActivity extends AppCompatActivity {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private ArrayList<CustomTabEntity> mTabEntities10 = new ArrayList<>();
     private View mDecorView;
     private ViewPager mViewPager;
     private CommonTabLayout mTabLayout_9;
+    private CommonTabLayout mTabLayout_10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +54,19 @@ public class ShadowTabActivity extends AppCompatActivity {
             mTabEntities.add(new TabEntity(mTitles[i], mContents[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
 
+        for (int i = 0; i < mTitles10.length; i++) {
+            mTabEntities10.add(new TabEntity(mTitles10[i]));
+        }
+
         mDecorView = getWindow().getDecorView();
         mViewPager = ViewFindUtils.find(mDecorView, R.id.vp_2);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
         /** indicator圆角色块2 */
         mTabLayout_9 = ViewFindUtils.find(mDecorView, R.id.tl_9);
+        mTabLayout_10 = ViewFindUtils.find(mDecorView, R.id.tl_10);
         mTabLayout_9.setTabData(mTabEntities);
+        mTabLayout_10.setTabData(mTabEntities10);
     }
 
     Random mRandom = new Random();

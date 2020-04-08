@@ -24,5 +24,7 @@
             tl:tl_indicator_width="80dp"
             tl:tl_textUnselectColor="@color/c_101010"
             tl:tl_textsize="14sp" />
+
+
     </LinearLayout>
 </ScrollView>

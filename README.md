@@ -51,6 +51,7 @@ public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm
 
 ```
 dependencies{
+    implementation 'com.zxn.tablayout:expand-tablayout:1.0.6'
     implementation 'com.zxn.tablayout:expand-tablayout:1.0.5'
 }
 ```
@@ -121,4 +122,30 @@ expand-tablayout:1.0.2
 git tag -a v1.0.2 -m 'expand-tablayout1.0.2:'
 git push origin v1.0.2
 git tag
+```
+
+## 变更
+
+```
+2、新增设置tab被选中以及未被选中的文字大小，大小的变化会在ViewPager滑动的时候自动变化：
+
+<attr name="tl_textSelectSize" />
+<attr name="tl_textUnSelectSize" />
+3、标题默认默认是文字居中，可以修改gravity和margin属性，设置在tab中的位置：
+
+<attr name="tl_tab_marginTop" />
+<attr name="tl_tab_marginBottom" />
+<attr name="tl_tab_gravity" />
+4、请务必重写PagerAdapter.getItemPosition()方法，根据object返回正确的位置信息，因为需要通过此方法找到对应位置的SlidingTab，进行文字样式切换：
+
+ @Override
+public int getItemPosition(@NonNull Object object) {
+    // PagerAdapter的默认实现，请返回正确的位置信息
+    return PagerAdapter.POSITION_NONE;
+}
+1.1.1新增
+
+新增自定义属性:是否开启文字的图片镜像 ，解决SlidingScaleTabLayou文字变化抖动的问题：
+
+<attr name="tl_openTextDmg" format="boolean"/>
 ```

@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.zxn.tablayoutsamples"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 2
         versionName "1.0"

@@ -13,11 +13,26 @@ import com.zxn.tablayoutsamples.adapter.SimpleHomeAdapter;
 
 public class SimpleHomeActivity extends AppCompatActivity {
     private Context mContext = this;
-    private final String[] mItems = {"SlidingTabLayout", "CommonTabLayout", "SegmentTabLayout", "ShadowTabLayout","SingleShadowTabActivity",};
-    private final Class<?>[] mClasses = {SlidingTabActivity.class, CommonTabActivity.class,
+    private final String[] mItems = {
+            "SlidingTabLayout",
+            "CommonTabLayout",
+            "SegmentTabLayout",
+            "ShadowTabLayout",
+            "SingleShadowTabActivity",
+            "SlidingScaleTabLayout(new)",
+            "SlidingScaleTabLayoutFragmentActivity(new)",
+            "SlidingScaleTabLayoutFragmentActivity(2)"
+
+    };
+    private final Class<?>[] mClasses = {SlidingTabActivity.class,
+            CommonTabActivity.class,
             SegmentTabActivity.class,
             ShadowTabActivity.class,
-            SingleShadowTabActivity.class};
+            SingleShadowTabActivity.class,
+            SlidingScaleTabLayoutActivity.class,
+            SlidingScaleTabLayoutFragmentActivity.class,
+            SlidingScaleTabLayoutActivity2.class
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

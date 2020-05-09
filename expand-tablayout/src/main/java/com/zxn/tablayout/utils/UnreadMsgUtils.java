@@ -79,6 +79,7 @@ public class UnreadMsgUtils implements IUnreadMsg {
             lp.width = (int) (5 * dm.density);
             lp.height = (int) (5 * dm.density);
             msgView.setLayoutParams(lp);
+            msgView.setVisibility(View.GONE);
         } else {
             lp.height = (int) (18 * dm.density);
             if (num > 0 && num < 10) {//圆

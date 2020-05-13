@@ -39,9 +39,17 @@ import java.util.List;
 
 /**
  * 没有继承HorizontalScrollView不能滑动,对于ViewPager无依赖
+ * Updated by zxn on 2020/5/13.
  */
 public class CommonTabLayout extends FrameLayout implements ValueAnimator.AnimatorUpdateListener {
+
+    /**
+     * 普通下划线指示器
+     */
     private static final int STYLE_NORMAL = 0;
+    /**
+     * 正三角形指示器
+     */
     private static final int STYLE_TRIANGLE = 1;
     private static final int STYLE_BLOCK = 2;
     private static final int STYLE_BLOCK_SHADOW = 3;//带阴影和下划线.
@@ -126,8 +134,11 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
 
     private FragmentChangeManager mFragmentChangeManager;
     private boolean mIsDoubleTab;
+    /**
+     * 控制是否重新计算绘制尺寸.
+     */
     private boolean mIsFirstDraw = true;
-    // show MsgTipView
+
     private Paint mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private SparseArray<Boolean> mInitSetMap = new SparseArray<>();
     private OnTabSelectListener mListener;
@@ -228,6 +239,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
 
         this.mTabEntitys.clear();
         this.mTabEntitys.addAll(tabEntitys);
+        mIsFirstDraw = true;
 
         notifyDataSetChanged();
     }

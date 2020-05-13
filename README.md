@@ -51,6 +51,7 @@ public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm
 
 ```
 dependencies{
+    implementation 'com.zxn.tablayout:expand-tablayout:1.1.1'
     implementation 'com.zxn.tablayout:expand-tablayout:1.0.6'
     implementation 'com.zxn.tablayout:expand-tablayout:1.0.5'
 }

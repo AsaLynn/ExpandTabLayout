@@ -1,5 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#eeeeee"
@@ -15,16 +15,15 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#ffffff"
-            tl:tl_iconVisible="false"
-            tl:tl_indicator_color="#00bb9c"
-            tl:tl_indicator_corner_radius="4dp"
-            tl:tl_indicator_is_double_tab="false"
-            tl:tl_indicator_style="BLOCK_SHADOW"
-            tl:tl_indicator_unselect_color="#DDDDDD"
-            tl:tl_indicator_width="80dp"
-            tl:tl_textUnselectColor="@color/c_101010"
-            tl:tl_textsize="14sp" />
-
+            app:tl_iconVisible="false"
+            app:tl_indicator_color="#00bb9c"
+            app:tl_indicator_corner_radius="4dp"
+            app:tl_indicator_is_double_tab="false"
+            app:tl_indicator_style="BLOCK_SHADOW"
+            app:tl_indicator_unselect_color="#DDDDDD"
+            app:tl_indicator_width="80dp"
+            app:tl_textUnselectColor="@color/c_101010"
+            app:tl_textsize="14sp" />
 
     </LinearLayout>
 </ScrollView>

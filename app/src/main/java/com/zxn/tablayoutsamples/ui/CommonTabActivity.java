@@ -3,12 +3,13 @@ package com.zxn.tablayoutsamples.ui;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
 
 import com.zxn.tablayout.CommonTabLayout;
 import com.zxn.tablayout.listener.CustomTabEntity;
@@ -23,18 +24,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class CommonTabActivity extends AppCompatActivity {
-    private Context mContext = this;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private ArrayList<Fragment> mFragments2 = new ArrayList<>();
-
-    private String[] mTitles = {"待接单", "配送异常", "进行中", "退款中","已完成"};
-    private int[] mIconUnselectIds = {
+    Random mRandom = new Random();
+    private final Context mContext = this;
+    private final ArrayList<Fragment> mFragments = new ArrayList<>();
+    private final ArrayList<Fragment> mFragments2 = new ArrayList<>();
+    private final String[] mTitles = {"待接单", "配送异常", "进行中", "退款中", "已完成"};
+    private final int[] mIconUnselectIds = {
             R.mipmap.tab_home_unselect, R.mipmap.tab_speech_unselect,
             R.mipmap.tab_contact_unselect, R.mipmap.tab_more_unselect, R.mipmap.tab_more_unselect};
-    private int[] mIconSelectIds = {
+    private final int[] mIconSelectIds = {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select, R.mipmap.tab_more_select};
-    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private final ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private View mDecorView;
     private ViewPager mViewPager;
     private CommonTabLayout mTabLayout_1;
@@ -168,8 +169,6 @@ public class CommonTabActivity extends AppCompatActivity {
         mTabLayout_msg.setMsgMargin(4, -10, 10);
     }
 
-    Random mRandom = new Random();
-
     private void tl_2() {
         mTabLayout_2.setTabData(mTabEntities);
         mTabLayout_2.setOnTabSelectListener(new OnTabSelectListener() {
@@ -207,6 +206,11 @@ public class CommonTabActivity extends AppCompatActivity {
         mViewPager.setCurrentItem(1);
     }
 
+    protected int dp2px(float dp) {
+        final float scale = mContext.getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
+    }
+
     private class MyPagerAdapter extends FragmentPagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -226,10 +230,5 @@ public class CommonTabActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             return mFragments.get(position);
         }
-    }
-
-    protected int dp2px(float dp) {
-        final float scale = mContext.getResources().getDisplayMetrics().density;
-        return (int) (dp * scale + 0.5f);
     }
 }

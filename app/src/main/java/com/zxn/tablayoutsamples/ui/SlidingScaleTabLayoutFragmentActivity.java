@@ -19,7 +19,7 @@ import com.zxn.tablayoutsamples.R;
  */
 public class SlidingScaleTabLayoutFragmentActivity extends AppCompatActivity {
 
-    private String[] titles = {"首页", "话题", "私信", "我的"};
+    private final String[] titles = {"首页", "话题", "私信", "我的"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

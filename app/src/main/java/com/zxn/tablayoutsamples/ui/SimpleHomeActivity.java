@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.zxn.tablayoutsamples.adapter.SimpleHomeAdapter;
 
 public class SimpleHomeActivity extends AppCompatActivity {
-    private Context mContext = this;
     private final String[] mItems = {
             "SlidingTabLayout",
             "CommonTabLayout",
@@ -33,6 +33,7 @@ public class SimpleHomeActivity extends AppCompatActivity {
             SlidingScaleTabLayoutFragmentActivity.class,
             SlidingScaleTabLayoutActivity2.class
     };
+    private final Context mContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

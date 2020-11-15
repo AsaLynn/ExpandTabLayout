@@ -2,17 +2,16 @@ package com.zxn.tablayoutsamples.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
 
 import com.zxn.tablayout.SegmentTabLayout;
 import com.zxn.tablayout.listener.OnTabSelectListener;
-import com.zxn.tablayout.utils.IUnreadMsg;
-import com.zxn.tablayout.utils.UnreadMsgUtils;
 import com.zxn.tablayout.widget.MsgView;
 import com.zxn.tablayoutsamples.R;
 import com.zxn.tablayoutsamples.utils.ViewFindUtils;
@@ -20,12 +19,12 @@ import com.zxn.tablayoutsamples.utils.ViewFindUtils;
 import java.util.ArrayList;
 
 public class SegmentTabActivity extends AppCompatActivity {
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private ArrayList<Fragment> mFragments2 = new ArrayList<>();
+    private final ArrayList<Fragment> mFragments = new ArrayList<>();
+    private final ArrayList<Fragment> mFragments2 = new ArrayList<>();
 
-    private String[] mTitles = {"首页", "消息"};
-    private String[] mTitles_2 = {"首页", "消息", "联系人"};
-    private String[] mTitles_3 = {"首页", "消息", "联系人", "更多"};
+    private final String[] mTitles = {"首页", "消息"};
+    private final String[] mTitles_2 = {"首页", "消息", "联系人"};
+    private final String[] mTitles_3 = {"首页", "消息", "联系人", "更多"};
     private View mDecorView;
     private SegmentTabLayout mTabLayout_3;
 

@@ -2,7 +2,6 @@ package com.zxn.tablayoutsamples.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -18,7 +17,7 @@ import com.zxn.tablayoutsamples.R;
 
 public class SlidingScaleTabLayoutActivity extends AppCompatActivity {
 
-    private int[] colors = {
+    private final int[] colors = {
             Color.BLACK, Color.BLUE, Color.CYAN, Color.RED
     };
 

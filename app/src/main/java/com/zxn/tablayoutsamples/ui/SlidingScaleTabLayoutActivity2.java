@@ -2,7 +2,6 @@ package com.zxn.tablayoutsamples.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -22,7 +21,7 @@ import com.zxn.tablayoutsamples.R;
 
 public class SlidingScaleTabLayoutActivity2 extends AppCompatActivity {
 
-    private int[] colors = {
+    private final int[] colors = {
             Color.BLACK, Color.BLUE, Color.CYAN, Color.RED
     };
 
@@ -83,7 +82,7 @@ public class SlidingScaleTabLayoutActivity2 extends AppCompatActivity {
     }
 
     private void showTitleLeftDrawable() {
-        for (int i = 0; i < viewPager.getAdapter().getCount(); i ++) {
+        for (int i = 0; i < viewPager.getAdapter().getCount(); i++) {
             if (i != viewPager.getCurrentItem()) {
                 tabLayout.getTitleView(i).setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(this, R.drawable.icon_wddj_dj), null, null, null);
             } else {

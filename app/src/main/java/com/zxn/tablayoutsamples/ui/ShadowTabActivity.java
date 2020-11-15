@@ -2,12 +2,13 @@ package com.zxn.tablayoutsamples.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
 
 import com.zxn.tablayout.CommonTabLayout;
 import com.zxn.tablayout.listener.CustomTabEntity;
@@ -19,21 +20,21 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ShadowTabActivity extends AppCompatActivity {
-    private Context mContext = this;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private ArrayList<Fragment> mFragments2 = new ArrayList<>();
-
-    private String[] mTitles = {"首页", "消息", "联系人", "更多"};
-    private String[] mTitles10 = {"外卖", "自取", "预订"};
-    private String[] mContents = {"10", "5.5", "100", "20"};
-    private int[] mIconUnselectIds = {
+    Random mRandom = new Random();
+    private final Context mContext = this;
+    private final ArrayList<Fragment> mFragments = new ArrayList<>();
+    private final ArrayList<Fragment> mFragments2 = new ArrayList<>();
+    private final String[] mTitles = {"首页", "消息", "联系人", "更多"};
+    private final String[] mTitles10 = {"外卖", "自取", "预订"};
+    private final String[] mContents = {"10", "5.5", "100", "20"};
+    private final int[] mIconUnselectIds = {
             R.mipmap.tab_home_unselect, R.mipmap.tab_speech_unselect,
             R.mipmap.tab_contact_unselect, R.mipmap.tab_more_unselect};
-    private int[] mIconSelectIds = {
+    private final int[] mIconSelectIds = {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
-    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private ArrayList<CustomTabEntity> mTabEntities10 = new ArrayList<>();
+    private final ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private final ArrayList<CustomTabEntity> mTabEntities10 = new ArrayList<>();
     private View mDecorView;
     private ViewPager mViewPager;
     private CommonTabLayout mTabLayout_9;
@@ -69,7 +70,10 @@ public class ShadowTabActivity extends AppCompatActivity {
         mTabLayout_10.setTabData(mTabEntities10);
     }
 
-    Random mRandom = new Random();
+    protected int dp2px(float dp) {
+        final float scale = mContext.getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
+    }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {
@@ -90,10 +94,5 @@ public class ShadowTabActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             return mFragments.get(position);
         }
-    }
-
-    protected int dp2px(float dp) {
-        final float scale = mContext.getResources().getDisplayMetrics().density;
-        return (int) (dp * scale + 0.5f);
     }
 }

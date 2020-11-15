@@ -5,10 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.zxn.tablayout.CommonTabLayout;
 import com.zxn.tablayout.listener.CustomTabEntity;
@@ -17,15 +13,14 @@ import com.zxn.tablayoutsamples.entity.TabEntity;
 import com.zxn.tablayoutsamples.utils.ViewFindUtils;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class SingleShadowTabActivity extends AppCompatActivity {
-    private Context mContext = this;
+    private final Context mContext = this;
 
-    private String[] mTitles10 = {"外卖", "自取", "预订"};
+    private final String[] mTitles10 = {"外卖", "自取", "预订"};
 
-    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private ArrayList<CustomTabEntity> mTabEntities10 = new ArrayList<>();
+    private final ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private final ArrayList<CustomTabEntity> mTabEntities10 = new ArrayList<>();
     private View mDecorView;
     private CommonTabLayout mTabLayout_10;
 

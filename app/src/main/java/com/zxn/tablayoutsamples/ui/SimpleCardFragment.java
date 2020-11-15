@@ -2,7 +2,6 @@ package com.zxn.tablayoutsamples.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,7 @@ public class SimpleCardFragment extends Fragment {
         View v = inflater.inflate(R.layout.fr_simple_card, container, false);
         // 这个设置tag要与FragmentPagerAdapter中的获取方法getItemPosition方法要对应上
         v.setTag(position);
-        TextView card_title_tv = (TextView) v.findViewById(R.id.card_title_tv);
+        TextView card_title_tv = v.findViewById(R.id.card_title_tv);
         card_title_tv.setText(mTitle);
         return v;
     }

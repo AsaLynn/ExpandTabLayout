@@ -12,9 +12,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class SimpleHomeAdapter extends BaseAdapter {
-    private Context mContext;
-    private String[] mItems;
-    private DisplayMetrics mDisplayMetrics;
+    private final Context mContext;
+    private final String[] mItems;
+    private final DisplayMetrics mDisplayMetrics;
 
     public SimpleHomeAdapter(Context context, String[] items) {
         this.mContext = context;

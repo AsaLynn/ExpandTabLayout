@@ -11,13 +11,28 @@
         android:orientation="vertical">
 
         <com.zxn.tablayout.CommonTabLayout
-            android:id="@+id/tl_10"
+            android:id="@+id/tabA"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#ffffff"
             app:tl_iconVisible="false"
             app:tl_indicator_color="#00bb9c"
             app:tl_indicator_corner_radius="4dp"
+            app:tl_indicator_is_double_tab="false"
+            app:tl_indicator_style="BLOCK_SHADOW"
+            app:tl_indicator_unselect_color="#DDDDDD"
+            app:tl_indicator_width="80dp"
+            app:tl_textUnselectColor="@color/c_101010"
+            app:tl_textsize="14sp" />
+
+        <com.zxn.tablayout.CommonTabLayout
+            android:id="@+id/tabB"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            app:tl_iconVisible="false"
+            app:tl_indicator_color="#00bb9c"
+            app:tl_indicator_corner_radius="25dp"
             app:tl_indicator_is_double_tab="false"
             app:tl_indicator_style="BLOCK_SHADOW"
             app:tl_indicator_unselect_color="#DDDDDD"

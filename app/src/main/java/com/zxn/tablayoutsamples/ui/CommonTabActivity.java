@@ -36,6 +36,7 @@ public class CommonTabActivity extends AppCompatActivity {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select, R.mipmap.tab_more_select};
     private final ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private final ArrayList<CustomTabEntity> mTabEntities11 = new ArrayList<>();
     private View mDecorView;
     private ViewPager mViewPager;
     private CommonTabLayout mTabLayout_1;
@@ -48,6 +49,7 @@ public class CommonTabActivity extends AppCompatActivity {
     private CommonTabLayout mTabLayout_8;
     private CommonTabLayout mTabLayout_9;
     private CommonTabLayout mTabLayout_10;
+    private CommonTabLayout mTabLayout_11;
     private CommonTabLayout mTabLayout_msg;
 
     @Override
@@ -63,6 +65,9 @@ public class CommonTabActivity extends AppCompatActivity {
 
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            if (i < 2){
+                mTabEntities11.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            }
         }
 
         mDecorView = getWindow().getDecorView();
@@ -88,6 +93,7 @@ public class CommonTabActivity extends AppCompatActivity {
         mTabLayout_9 = ViewFindUtils.find(mDecorView, R.id.tl_9);
 
         mTabLayout_10 = ViewFindUtils.find(mDecorView, R.id.tl_10);
+        mTabLayout_11 = ViewFindUtils.find(mDecorView, R.id.tl_11);
 
         mTabLayout_msg = ViewFindUtils.find(mDecorView, R.id.ctl_msg);
 
@@ -101,6 +107,7 @@ public class CommonTabActivity extends AppCompatActivity {
         mTabLayout_8.setTabData(mTabEntities);
         mTabLayout_9.setTabData(mTabEntities);
         mTabLayout_10.setTabData(mTabEntities);
+        mTabLayout_11.setTabData(mTabEntities11);
         mTabLayout_msg.setTabData(mTabEntities);
 
         mTabLayout_3.setOnTabSelectListener(new OnTabSelectListener() {

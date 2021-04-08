@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#eeeeee"
+    android:background="#ffffff"
     android:scrollbars="none">
 
     <LinearLayout
@@ -14,7 +14,6 @@
             android:id="@+id/tabA"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#ffffff"
             app:tl_iconVisible="false"
             app:tl_indicator_color="#00bb9c"
             app:tl_indicator_corner_radius="4dp"
@@ -39,6 +38,20 @@
             app:tl_indicator_width="80dp"
             app:tl_textUnselectColor="@color/c_101010"
             app:tl_textsize="14sp" />
+
+        <com.zxn.tablayout.CommonTabLayout
+            android:id="@+id/tabC"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            app:tl_iconVisible="false"
+            app:tl_indicator_color="#00C8C5"
+            app:tl_indicator_corner_radius="20dp"
+            app:tl_indicator_is_double_tab="false"
+            app:tl_indicator_style="BLOCK_SHADOW"
+            app:tl_indicator_unselect_color="#F9FAFB"
+            app:tl_indicator_width="54dp"
+            app:tl_textUnselectColor="#858B9C"
+            app:tl_textsize="9sp" />
 
     </LinearLayout>
 </ScrollView>

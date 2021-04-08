@@ -31,6 +31,12 @@ open class SingleShadowTabActivity : AppCompatActivity() {
         mTabLayout_10 = ViewFindUtils.find(mDecorView, R.id.tabA)
         mTabLayout_10?.setTabData(mTabEntities10)
         tabB.setTabData(mTabEntities10)
+
+        tabC.setTabData(mutableListOf<CustomTabEntity>(TabEntity("常见饮品"),
+                TabEntity("蛋白饮品"),
+                TabEntity("果蔬饮品"),
+                TabEntity("清凉饮品"),
+                TabEntity("更多")))
     }
 
     protected fun dp2px(dp: Float): Int {

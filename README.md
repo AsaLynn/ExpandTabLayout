@@ -51,7 +51,7 @@ public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm
 
 ```
 dependencies{
-    
+    implementation 'com.github.Lyngzh:ExpandTabLayout:1.1.2'
 }
 ```
 

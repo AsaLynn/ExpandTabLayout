@@ -51,9 +51,7 @@ public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm
 
 ```
 dependencies{
-    implementation 'com.zxn.tablayout:expand-tablayout:1.1.1'
-    implementation 'com.zxn.tablayout:expand-tablayout:1.0.6'
-    implementation 'com.zxn.tablayout:expand-tablayout:1.0.5'
+    
 }
 ```
 
@@ -104,28 +102,17 @@ dependencies{
 
 ## 标签
 
-expand-tablayout:1.0.4
+expand-tablayout:1.1.2
 ```
-git tag -a v1.0.4 -m 'expand-tablayout1.0.4:修复bug'
-git push origin v1.0.4
+git tag -a v1.1.2 -m '升级'
+git push origin v1.1.2
 git tag
 ```
 
-expand-tablayout:1.0.3
-```
-git tag -a v1.0.3 -m 'expand-tablayout1.0.3:增加设置消息最大值方法.'
-git push origin v1.0.3
-git tag
-```
-
-expand-tablayout:1.0.2
-```
-git tag -a v1.0.2 -m 'expand-tablayout1.0.2:'
-git push origin v1.0.2
-git tag
-```
 
 ## 变更
+- 1.1.2 库依赖升级.
+
 
 ```
 2、新增设置tab被选中以及未被选中的文字大小，大小的变化会在ViewPager滑动的时候自动变化：

@@ -104,8 +104,8 @@ dependencies{
 
 expand-tablayout:1.1.2
 ```
-git tag -a v1.1.2 -m '升级'
-git push origin v1.1.2
+git tag -a 1.1.2 -m '升级'
+git push origin 1.1.2
 git tag
 ```
 

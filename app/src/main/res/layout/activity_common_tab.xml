@@ -23,7 +23,7 @@
             app:tl_indicator_height="2dp"
             app:tl_textSelectColor="#00bb9c"
             app:tl_textUnselectColor="#66000000"
-            app:tl_textsize="12sp" />
+            app:tl_textSize="12sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_1"
@@ -54,7 +54,7 @@
             app:tl_indicator_height="0dp"
             app:tl_textSelectColor="#2C97DE"
             app:tl_textUnselectColor="#66000000"
-            app:tl_textsize="12sp"
+            app:tl_textSize="12sp"
             app:tl_underline_color="#DDDDDD"
             app:tl_underline_height="1dp" />
 
@@ -77,7 +77,7 @@
             app:tl_indicator_gravity="TOP"
             app:tl_textSelectColor="#2C97DE"
             app:tl_textUnselectColor="#66000000"
-            app:tl_textsize="15sp"
+            app:tl_textSize="15sp"
             app:tl_underline_color="#DDDDDD"
             app:tl_underline_gravity="TOP"
             app:tl_underline_height="1dp" />
@@ -90,7 +90,7 @@
             app:tl_iconVisible="false"
             app:tl_indicator_width="10dp"
             app:tl_textBold="SELECT"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_5"
@@ -102,7 +102,7 @@
             app:tl_indicator_height="4dp"
             app:tl_indicator_width="4dp"
             app:tl_textBold="BOTH"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_6"
@@ -113,7 +113,7 @@
             app:tl_indicator_corner_radius="1.5dp"
             app:tl_indicator_height="3dp"
             app:tl_indicator_width="10dp"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_7"
@@ -126,7 +126,7 @@
             app:tl_indicator_height="3dp"
             app:tl_indicator_style="TRIANGLE"
             app:tl_indicator_width="10dp"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_8"
@@ -139,7 +139,7 @@
             app:tl_indicator_margin_left="5dp"
             app:tl_indicator_margin_right="5dp"
             app:tl_indicator_style="BLOCK"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_9"
@@ -153,7 +153,7 @@
             app:tl_indicator_unselect_color="#6000bb9c"
             app:tl_indicator_width="70dp"
             app:tl_textUnselectColor="@color/c_020202"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_10"
@@ -170,7 +170,7 @@
             app:tl_indicator_style="BLOCK_SHADOW"
             app:tl_indicator_unselect_color="#00bb9c"
             app:tl_textUnselectColor="@color/c_020202"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_11"
@@ -180,7 +180,7 @@
             app:tl_iconVisible="false"
             app:tl_indicator_width="20dp"
             app:tl_textBold="SELECT"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
     </LinearLayout>
 </ScrollView>

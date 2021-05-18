@@ -31,7 +31,7 @@
             tl:tl_indicator_style="BLOCK_SHADOW"
             tl:tl_indicator_unselect_color="#6000bb9c"
             tl:tl_textUnselectColor="@color/c_020202"
-            tl:tl_textsize="14sp" />
+            tl:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tl_10"
@@ -46,6 +46,6 @@
             tl:tl_indicator_unselect_color="#DDDDDD"
             tl:tl_indicator_width="80dp"
             tl:tl_textUnselectColor="@color/c_101010"
-            tl:tl_textsize="14sp" />
+            tl:tl_textSize="14sp" />
     </LinearLayout>
 </ScrollView>

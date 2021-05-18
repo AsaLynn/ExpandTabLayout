@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--tab容器背景-->
+    <attr name="tabContainerBackground" format="color|reference" />
+
     <!-- 设置字体未选中颜色 -->
     <attr name="tl_textUnSelectColor" format="color" />
 
     <!-- title -->
     <!-- 设置字体大小 -->
-    <attr name="tl_textSize" format="dimension" />
     <attr name="tl_textSelectSize" format="dimension" />
     <attr name="tl_textUnSelectSize" format="dimension" />
 
@@ -87,7 +89,7 @@
 
     <!-- title -->
     <!-- 设置字体大小 -->
-    <attr name="tl_textsize" format="dimension" />
+    <attr name="tl_textSize" format="dimension" />
     <!-- 设置字体选中颜色 -->
     <attr name="tl_textSelectColor" format="color" />
     <!-- 设置字体未选中颜色 -->
@@ -98,6 +100,7 @@
         <enum name="SELECT" value="1" />
         <enum name="BOTH" value="2" />
     </attr>
+
     <!-- 设置字体全大写 -->
     <attr name="tl_textAllCaps" format="boolean" />
 
@@ -131,7 +134,7 @@
         <attr name="tl_tab_width" />
 
         <!-- title -->
-        <attr name="tl_textsize" />
+        <attr name="tl_textSize" />
         <attr name="tl_textSelectColor" />
         <attr name="tl_textUnselectColor" />
         <attr name="tl_textBold" />
@@ -172,7 +175,7 @@
         <attr name="tl_tab_width" />
 
         <!-- title -->
-        <attr name="tl_textsize" />
+        <attr name="tl_textSize" />
         <attr name="tl_textSelectColor" />
         <attr name="tl_textUnselectColor" />
         <attr name="tl_textBold" />
@@ -224,7 +227,7 @@
         <attr name="tl_tab_width" />
 
         <!-- title -->
-        <attr name="tl_textsize" />
+        <attr name="tl_textSize" />
         <attr name="tl_textSelectColor" />
         <attr name="tl_textUnselectColor" />
         <attr name="tl_textBold" />
@@ -250,7 +253,6 @@
         <!-- 圆角矩形宽高相等,取较宽高中大值-->
         <attr name="mv_isWidthHeightEqual" format="boolean" />
     </declare-styleable>
-
 
     <declare-styleable name="SlidingScaleTabLayout">
         <!-- indicator -->
@@ -293,8 +295,41 @@
         <attr name="tl_textAllCaps" />
 
         <!-- 是否开启文字的图片镜像 -->
-        <attr name="tl_openTextDmg" format="boolean"/>
+        <attr name="tl_openTextDmg" format="boolean" />
 
     </declare-styleable>
 
+    <declare-styleable name="ProminentTabLayout">
+
+        <!-- indicator -->
+        <attr name="tl_indicator_color" />
+        <attr name="tl_indicator_height" />
+        <attr name="tl_indicator_width" />
+        <attr name="tl_indicator_corner_radius" />
+        <attr name="tl_indicator_anim_enable" />
+        <attr name="tl_indicator_anim_duration" />
+        <attr name="tl_indicator_margin_bottom" />
+
+        <!-- tab -->
+        <attr name="tl_tab_width" />
+        <attr name="tl_tab_space_equal" />
+
+        <!-- tabContainer -->
+        <attr name="tabContainerBackground" />
+
+        <!-- title -->
+        <attr name="tl_textSize" />
+        <attr name="tl_textUnSelectSize" />
+        <attr name="tl_textSelectColor" />
+        <attr name="tl_textUnselectColor" />
+        <attr name="tl_textAllCaps" />
+
+
+    </declare-styleable>
 </resources>
+
+
+    <!--
+
+    <attr name="tl_textBold" />
+    -->

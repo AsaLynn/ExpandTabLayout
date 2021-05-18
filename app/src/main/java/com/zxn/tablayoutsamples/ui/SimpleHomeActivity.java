@@ -4,16 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.zxn.tablayoutsamples.adapter.SimpleHomeAdapter;
 
+/**
+ * 标签列表页面.
+ */
 public class SimpleHomeActivity extends AppCompatActivity {
+
     private final String[] mItems = {
+            "ProminentTabLayout",
             "SlidingTabLayout",
             "CommonTabLayout",
             "SegmentTabLayout",
@@ -24,7 +27,9 @@ public class SimpleHomeActivity extends AppCompatActivity {
             "SlidingScaleTabLayoutFragmentActivity(2)"
 
     };
-    private final Class<?>[] mClasses = {SlidingTabActivity.class,
+    private final Class<?>[] mClasses = {
+            ProminentTabActivity.class,
+            SlidingTabActivity.class,
             CommonTabActivity.class,
             SegmentTabActivity.class,
             ShadowTabActivity.class,
@@ -43,12 +48,9 @@ public class SimpleHomeActivity extends AppCompatActivity {
         lv.setFadingEdgeLength(0);
         lv.setAdapter(new SimpleHomeAdapter(mContext, mItems));
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(mContext, mClasses[position]);
-                startActivity(intent);
-            }
+        lv.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent = new Intent(mContext, mClasses[position]);
+            startActivity(intent);
         });
 
         setContentView(lv);

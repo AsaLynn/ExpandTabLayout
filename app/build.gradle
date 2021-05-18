@@ -5,6 +5,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "com.zxn.tablayoutsamples"
@@ -19,7 +20,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '30.0.3'
+
 }
 
 dependencies {
@@ -28,8 +29,10 @@ dependencies {
     implementation project(':expand-tablayout')
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 }
 repositories {
-    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+    //maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     mavenCentral()
 }

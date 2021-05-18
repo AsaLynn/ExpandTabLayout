@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ProminentTabActivity">
+
+    <com.zxn.tablayout.ProminentTabLayout
+        android:id="@+id/prominentTabA"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#FFEB3B"
+        android:paddingTop="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabContainerBackground="@drawable/sp_rec_bg_tab_container_coin"
+        app:tl_indicator_color="#ffffff"
+        app:tl_indicator_corner_radius="6dp"
+        app:tl_indicator_height="39dp"
+        app:tl_indicator_margin_bottom="9dp"
+        app:tl_textSelectColor="#111A34"
+        app:tl_textSize="12sp"
+        app:tl_textUnselectColor="#ffffff" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--
+        app:tl_indicator_width="54dp"
+        app:tl_indicator_style="BLOCK_SHADOW"
+        app:tl_indicator_unselect_color="#F9FAFB"
+    -->

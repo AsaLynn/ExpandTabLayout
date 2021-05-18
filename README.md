@@ -7,7 +7,7 @@
     * 新增部分属性
     * 新增支持多种Indicator显示器
     * 新增支持未读消息显示
-    * 新增方法for懒癌患者
+    
     
 ```java
 /** 关联ViewPager,用于不想在ViewPager适配器中设置titles数据的情况 */
@@ -17,18 +17,20 @@ public void setViewPager(ViewPager vp, String[] titles)
 public void setViewPager(ViewPager vp, String[] titles, FragmentActivity fa, ArrayList<Fragment> fragments) 
 ```
 
-* CommonTabLayout:不同于SlidingTabLayout对ViewPager依赖,它是一个不依赖ViewPager可以与其他控件自由搭配使用的TabLayout.
+* CommonTabLayout:不同于[]()SlidingTabLayout对ViewPager依赖,它是一个不依赖ViewPager可以与其他控件自由搭配使用的TabLayout.
     * 支持多种Indicator显示器,以及Indicator动画
     * 支持未读消息显示
     * 支持Icon以及Icon位置
-    * 新增方法for懒癌患者
     
 ```java
 /** 关联数据支持同时切换fragments */
 public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm, int containerViewId, ArrayList<Fragment> fragments)
 ```
 
-* SegmentTabLayout
+##### * SegmentTabLayout
+	分段和块选中效果.
+##### * ProminentTablayout
+	一个页签突出效果.
 
 ## Demo
 ![](https://github.com/H07000223/FlycoTabLayout/blob/master/preview_1.gif)
@@ -51,7 +53,7 @@ public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm
 
 ```
 dependencies{
-    implementation 'com.github.Lyngzh:ExpandTabLayout:1.1.2'
+    implementation 'com.github.AsaLynn:ExpandTabLayout:1.1.2'
 }
 ```
 

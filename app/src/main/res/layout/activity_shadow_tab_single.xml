@@ -22,7 +22,7 @@
             app:tl_indicator_unselect_color="#DDDDDD"
             app:tl_indicator_width="80dp"
             app:tl_textUnselectColor="@color/c_101010"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tabB"
@@ -37,7 +37,7 @@
             app:tl_indicator_unselect_color="#DDDDDD"
             app:tl_indicator_width="80dp"
             app:tl_textUnselectColor="@color/c_101010"
-            app:tl_textsize="14sp" />
+            app:tl_textSize="14sp" />
 
         <com.zxn.tablayout.CommonTabLayout
             android:id="@+id/tabC"
@@ -51,7 +51,7 @@
             app:tl_indicator_unselect_color="#F9FAFB"
             app:tl_indicator_width="54dp"
             app:tl_textUnselectColor="#858B9C"
-            app:tl_textsize="9sp" />
+            app:tl_textSize="9sp" />
 
     </LinearLayout>
 </ScrollView>

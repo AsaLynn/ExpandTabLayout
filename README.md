@@ -1,13 +1,12 @@
 # ExpandTabLayout
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlycoTabLayout-green.svg?style=true)](https://android-arsenal.com/details/1/2756)
 
-一个Android TabLayout库,目前有3个TabLayout
+一个Android TabLayout库,目前有4个TabLayout
 
 * SlidingTabLayout:参照[PagerSlidingTabStrip](https://github.com/jpardogo/PagerSlidingTabStrip)进行大量修改.
     * 新增部分属性
     * 新增支持多种Indicator显示器
     * 新增支持未读消息显示
-    
     
 ```java
 /** 关联ViewPager,用于不想在ViewPager适配器中设置titles数据的情况 */
@@ -33,27 +32,20 @@ public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm
 	一个页签突出效果.
 
 ## Demo
-![](https://github.com/H07000223/FlycoTabLayout/blob/master/preview_1.gif)
+![](https://github.com/AsaLynn/ExpandTabLayout/blob/master/preview_1.gif)
 
-![](https://github.com/H07000223/FlycoTabLayout/blob/master/preview_2.gif)
+![](https://github.com/AsaLynn/ExpandTabLayout/blob/master/preview_2.gif)
 
-![](https://github.com/H07000223/FlycoTabLayout/blob/master/preview_3.gif)
+![](https://github.com/AsaLynn/ExpandTabLayout/blob/master/preview_3.gif)
 
-![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image01)
+![](https://github.com/AsaLynn/ExpandTabLayout/blob/master/image/image05.png)
 
-![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image02)
-
-![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image03)
-
-![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image04)
-
-![](https://github.com/H07000223/FlycoTabLayout/blob/master/image/image05)
 
 ## Gradle
 
 ```
 dependencies{
-    implementation 'com.github.AsaLynn:ExpandTabLayout:1.1.2'
+    implementation 'com.github.AsaLynn:ExpandTabLayout:1.1.3'
 }
 ```
 
@@ -93,6 +85,14 @@ dependencies{
 | tl_indicator_anim_duration |integer| 设置显示器动画时间(only for CommonTabLayout)
 | tl_indicator_bounce_enable |boolean| 设置显示器支持动画回弹效果(only for CommonTabLayout)
 | tl_indicator_width_equal_title |boolean| 设置显示器与标题一样长(only for SlidingTabLayout)
+| indicatorTopLeftRadius |dimension| 设置显示器左上圆角半径(only for ProminentTabLayout,优先级大于tl_indicator_corner_radius)
+| indicatorTopRightRadius |dimension| 设置显示器右上圆角半径(only for ProminentTabLayout,优先级大于tl_indicator_corner_radius)
+| indicatorTopRightRadius |dimension| 设置显示器右上圆角半径(only for ProminentTabLayout,优先级大于tl_indicator_corner_radius)
+| indicatorBottomLeftRadius |dimension| 设置显示器左下圆角半径(only for ProminentTabLayout,优先级大于tl_indicator_corner_radius)
+| indicatorBottomRightRadius |dimension| 设置显示器右下圆角半径(only for ProminentTabLayout,优先级大于tl_indicator_corner_radius)
+| tabContainerBackground |reference| 设置tab区域的背景(only for ProminentTabLayout)
+
+
 
 ## Dependence
 *   [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
@@ -104,15 +104,18 @@ dependencies{
 
 ## 标签
 
-expand-tablayout:1.1.2
+expand-tablayout:1.1.3
 ```
-git tag -a 1.1.2 -m '升级'
-git push origin 1.1.2
+git tag -a 1.1.3 -m '升级'
+git push origin 1.1.3
 git tag
 ```
 
 
 ## 变更
+- 1.1.3 库依赖升级.
+	新增ProminentTabLayout.
+	
 - 1.1.2 库依赖升级.
 
 
@@ -122,7 +125,6 @@ git tag
 <attr name="tl_textSelectSize" />
 <attr name="tl_textUnSelectSize" />
 3、标题默认默认是文字居中，可以修改gravity和margin属性，设置在tab中的位置：
-
 <attr name="tl_tab_marginTop" />
 <attr name="tl_tab_marginBottom" />
 <attr name="tl_tab_gravity" />

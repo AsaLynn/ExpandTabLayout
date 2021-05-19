@@ -20,8 +20,10 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.zxn.tablayout.listener.CustomTabEntity
-import com.zxn.tablayout.listener.OnTabSelectListener
+import com.zxn.tablayout.utils.FragmentChangeManager
 
 /**
  *  Created by zxn on 2021/5/18.
@@ -62,7 +64,6 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
         }
         mTabsContainer.also {
             addView(it)
-            //it.background = tabContainerBackground
         }
     }
 
@@ -76,14 +77,19 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
     private var mIndicatorColor = 0
     private var mIndicatorHeight = 0f
     private var mIndicatorWidth = 0f
-    private var mIndicatorCornerRadius = 0f
+    private var mIndicatorCornerRadius = 0F
+    private var indicatorTopLeftR = 0F
+    private var indicatorTopRightR = 0F
+    private var indicatorBottomLeftR = 0F
+    private var indicatorBottomRightR = 0F
     private var mIndicatorAnimEnable = false
     private var mIndicatorAnimDuration: Long = 0
 
     /**
      * Text
      */
-    private var mTextSize = 0f
+    private var mUnSelectSize = 0f
+    private var mTextSelectSize = 0f
     private var mTextSelectColor = 0
     private var mTextUnselectColor = 0
 
@@ -120,7 +126,7 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
             mLastTab = field
             field = value
             updateTabSelection(value)
-            /*mFragmentChangeManager?.setFragments(value)*/
+            mFragmentChangeManager?.setFragments(value)
             if (mIndicatorAnimEnable) {
                 calcOffset()
             } else {
@@ -128,13 +134,12 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
             }
         }
 
-    private val mListener: OnTabSelectListener? = null
+    private var mListener: ((Int) -> Unit)? = null
 
     /**
      * 用于绘制显示器
      */
     private val mIndicatorRect = Rect()
-    private val mUnselectIndicatorRect = Rect()
     private val mIndicatorDrawable = GradientDrawable()
     private var mTabSpaceEqual = false
     private var mIndicatorMarginBottom = 0f
@@ -146,7 +151,15 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
             return
         }
 
-        tabContainerBackground?.draw(canvas)
+        tabContainerBackground?.let {
+            it.setBounds(
+                mTabsContainer.left,
+                mTabsContainer.top,
+                mTabsContainer.right,
+                mTabsContainer.bottom
+            )
+            it.draw(canvas)
+        }
 
         //draw indicator line
         if (mIndicatorAnimEnable) {
@@ -159,45 +172,36 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
         }
 
         if (mIndicatorHeight > 0) {
-            if (mIndicatorCornerRadius < 0 || mIndicatorCornerRadius > mIndicatorHeight / 2) {
-                mIndicatorCornerRadius = mIndicatorHeight / 2
-            }
-
-            for (i in mUnselectIndicatorDrawables.indices) {
-                val drawable = mUnselectIndicatorDrawables[i]
-                //drawable.setColor(mUnselectIndicatorColor)
-                val width = mIndicatorRect.right - mIndicatorRect.left
-                val view = mTabsContainer.getChildAt(i)
-                val left = view.left + (view.right - view.left) / 2 - width / 2
-                val right = view.left + (view.right - view.left) / 2 + width / 2
-                val top = 0
-                val bottom = (mIndicatorHeight).toInt()
-                drawable.setBounds(
-                    left,
-                    top,
-                    right,
-                    bottom
-                )
-
-                drawable.cornerRadius =
-                    mIndicatorCornerRadius
-                drawable.draw(canvas)
-            }
-
             mIndicatorDrawable.run {
                 setColor(mIndicatorColor)
                 setBounds(
                     paddingLeft + mIndicatorRect.left,
                     height - mIndicatorHeight.toInt(),
                     (paddingLeft + mIndicatorRect.right),
-                    (height - paddingBottom - mIndicatorMarginBottom).toInt()
+                    (height - mIndicatorMarginBottom).toInt()
                 )
-                cornerRadius = mIndicatorCornerRadius
+                if (indicatorTopLeftR > 0
+                    || indicatorTopRightR > 0
+                    || indicatorBottomLeftR > 0
+                    || indicatorBottomRightR > 0
+                ) {
+                    //设置左,上,右,下,四个部位的圆角.
+                    cornerRadii = floatArrayOf(
+                        indicatorTopLeftR,
+                        indicatorTopLeftR,
+                        indicatorTopRightR,
+                        indicatorTopRightR,
+                        indicatorBottomLeftR,
+                        indicatorBottomLeftR,
+                        indicatorBottomRightR,
+                        indicatorBottomRightR,
+                    )
+                } else {
+                    cornerRadius = mIndicatorCornerRadius
+                }
                 draw(canvas)
             }
         }
-
-
     }
 
     override fun onAnimationUpdate(animation: ValueAnimator) {
@@ -233,19 +237,14 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
     }
 
     private fun calcIndicatorRect() {
-        for (i in 0 until mTabsContainer.childCount) {
-            mUnselectIndicatorRect.left = 0
-            mUnselectIndicatorRect.top = 0
-            mUnselectIndicatorRect.right = 0
-            mUnselectIndicatorRect.bottom = 0
-        }
         val currentTabView = mTabsContainer.getChildAt(mCurrentTab)
         val left = currentTabView.left.toFloat()
         val right = currentTabView.right.toFloat()
         mIndicatorRect.left = left.toInt()
         mIndicatorRect.right = right.toInt()
-        if (mIndicatorWidth < 0) {   //indicatorWidth小于0时,原jpardogo's PagerSlidingTabStrip
-        } else { //indicatorWidth大于0时,圆角矩形以及三角形
+
+        if (mIndicatorWidth >= 0) {
+            //indicatorWidth大于0时,圆角矩形以及三角形
             val indicatorLeft = currentTabView.left + (currentTabView.width - mIndicatorWidth) / 2
             mIndicatorRect.left = indicatorLeft.toInt()
             mIndicatorRect.right = (mIndicatorRect.left + mIndicatorWidth).toInt()
@@ -267,19 +266,17 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
     private fun updateTabStyles() {
         for (i in 0 until mTabCount) {
             val tabView = mTabsContainer.getChildAt(i)
-            val tv_tab_title = tabView.findViewById<View>(R.id.tv_tab_title) as TextView
-            tv_tab_title.setTextColor(if (i == mCurrentTab) mTextSelectColor else mTextUnselectColor)
-            tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize)
-            if (mTextAllCaps) {
-                tv_tab_title.text = tv_tab_title.text.toString().toUpperCase()
+            tabView.findViewById<TextView>(R.id.tv_tab_title).run {
+                this.setTextColor(if (i == mCurrentTab) mTextSelectColor else mTextUnselectColor)
+                this.setTextSize(
+                    TypedValue.COMPLEX_UNIT_PX,
+                    if (i == mCurrentTab) mTextSelectSize else mUnSelectSize
+                )
+                if (mTextAllCaps) {
+                    this.text = this.text.toString().toUpperCase()
+                }
             }
-            /*if (mTextBold == CommonTabLayout.TEXT_BOLD_BOTH) {
-                tv_tab_title.paint.isFakeBoldText = true
-            } else if (mTextBold == CommonTabLayout.TEXT_BOLD_NONE) {
-                tv_tab_title.paint.isFakeBoldText = false
-            }*/
-            val iv_tab_icon = tabView.findViewById<View>(R.id.iv_tab_icon) as ImageView
-            iv_tab_icon.visibility = GONE
+            tabView.findViewById<ImageView>(R.id.iv_tab_icon).visibility = GONE
         }
     }
 
@@ -300,7 +297,6 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
                 mValueAnimator!!.interpolator = mInterpolator
             }*/
 
-            //java.lang.IllegalArgumentException: Animators cannot have negative duration: -1
             if (mIndicatorAnimDuration < 0) {
                 //mIndicatorAnimDuration = if (mIndicatorBounceEnable) 500 else 250.toLong()
                 mIndicatorAnimDuration = 250L
@@ -311,21 +307,24 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
     }
 
     private fun addTab(position: Int, tabView: View) {
-        val tv_tab_title = tabView.findViewById<View>(R.id.tv_tab_title) as TextView
-        tv_tab_title.setText(tabEntityList[position].tabTitle)
-        val iv_tab_icon = tabView.findViewById<View>(R.id.iv_tab_icon) as ImageView
-        iv_tab_icon.setImageResource(tabEntityList[position].tabUnselectedIcon)
+        tabView.findViewById<TextView>(R.id.tv_tab_title).also {
+            it.text = tabEntityList[position].tabTitle
+        }
+
+        tabView.findViewById<ImageView>(R.id.iv_tab_icon).also {
+            it.setImageResource(tabEntityList[position].tabUnselectedIcon)
+        }
+
         tabView.setOnClickListener { v ->
-            val position = v.tag as Int
-            if (mCurrentTab != position) {
-                mCurrentTab = position
-                mListener?.onTabSelect(position)
-            } else {
-                mListener?.onTabReselect(position)
+            (v.tag as Int).also {
+                if (mCurrentTab != it) {
+                    mCurrentTab = it
+                    mListener?.invoke(it)
+                }
             }
         }
         /** 每一个Tab的布局参数  */
-        var lp_tab = if (mTabSpaceEqual) LinearLayout.LayoutParams(
+        var lpTab = if (mTabSpaceEqual) LinearLayout.LayoutParams(
             0,
             LayoutParams.MATCH_PARENT,
             1.0f
@@ -333,21 +332,27 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
             LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT
         )
         if (mTabWidth > 0) {
-            lp_tab = LinearLayout.LayoutParams(mTabWidth.toInt(), LayoutParams.MATCH_PARENT)
+            lpTab = LinearLayout.LayoutParams(mTabWidth.toInt(), LayoutParams.MATCH_PARENT)
         }
-        mTabsContainer.addView(tabView, position, lp_tab)
+        mTabsContainer.addView(tabView, position, lpTab)
     }
 
     private fun updateTabSelection(position: Int) {
         for (i in 0 until mTabCount) {
             val tabView = mTabsContainer.getChildAt(i)
             val isSelect = i == position
-            val tab_title = tabView.findViewById<View>(R.id.tv_tab_title) as TextView
-            tab_title.setTextColor(if (isSelect) mTextSelectColor else mTextUnselectColor)
-
-            val iv_tab_icon = tabView.findViewById<View>(R.id.iv_tab_icon) as ImageView
+            tabView.findViewById<TextView>(R.id.tv_tab_title).also {
+                it.setTextColor(if (isSelect) mTextSelectColor else mTextUnselectColor)
+                it.setTextSize(
+                    TypedValue.COMPLEX_UNIT_PX,
+                    if (isSelect) mTextSelectSize else mUnSelectSize
+                )
+            }
             val tabEntity: CustomTabEntity = tabEntityList[i]
-            iv_tab_icon.setImageResource(if (isSelect) tabEntity.tabSelectedIcon else tabEntity.tabUnselectedIcon)
+            tabView.findViewById<ImageView>(R.id.iv_tab_icon).also {
+                it.setImageResource(if (isSelect) tabEntity.tabSelectedIcon else tabEntity.tabUnselectedIcon)
+            }
+
             /*if (mTextBold == CommonTabLayout.TEXT_BOLD_WHEN_SELECT) {
                 tab_title.paint.isFakeBoldText = isSelect
             }*/
@@ -372,12 +377,73 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
             R.styleable.ProminentTabLayout_tl_indicator_corner_radius,
             dp2px(0F).toFloat()
         )
+        if (mIndicatorCornerRadius < 0) {
+            mIndicatorCornerRadius = 0F
+        }
+
+        if (mIndicatorCornerRadius > mIndicatorHeight / 2) {
+            mIndicatorCornerRadius = mIndicatorHeight / 2
+        }
+
+        indicatorTopLeftR = ta.getDimension(
+            R.styleable.ProminentTabLayout_indicatorTopLeftRadius,
+            dp2px(0F).toFloat()
+        )
+        if (indicatorTopLeftR < 0) {
+            indicatorTopLeftR = 0F
+        }
+
+        if (indicatorTopLeftR > mIndicatorHeight / 2) {
+            indicatorTopLeftR = mIndicatorHeight / 2
+        }
+
+
+        indicatorTopRightR = ta.getDimension(
+            R.styleable.ProminentTabLayout_indicatorTopRightRadius,
+            dp2px(0F).toFloat()
+        )
+        if (indicatorTopRightR < 0) {
+            indicatorTopRightR = 0F
+        }
+
+        if (indicatorTopRightR > mIndicatorHeight / 2) {
+            indicatorTopRightR = mIndicatorHeight / 2
+        }
+
+        indicatorBottomLeftR = ta.getDimension(
+            R.styleable.ProminentTabLayout_indicatorBottomLeftRadius,
+            dp2px(0F).toFloat()
+        )
+        if (indicatorBottomLeftR < 0) {
+            indicatorBottomLeftR = 0F
+        }
+        if (indicatorBottomLeftR > mIndicatorHeight / 2) {
+            indicatorBottomLeftR = mIndicatorHeight / 2
+        }
+
+        indicatorBottomRightR = ta.getDimension(
+            R.styleable.ProminentTabLayout_indicatorBottomRightRadius,
+            dp2px(0F).toFloat()
+        )
+        if (indicatorBottomRightR < 0) {
+            indicatorBottomRightR = 0F
+        }
+
+        if (indicatorBottomRightR > mIndicatorHeight / 2) {
+            indicatorBottomRightR = mIndicatorHeight / 2
+        }
+
         mIndicatorAnimEnable =
             ta.getBoolean(R.styleable.ProminentTabLayout_tl_indicator_anim_enable, true)
         mIndicatorAnimDuration =
             ta.getInt(R.styleable.ProminentTabLayout_tl_indicator_anim_duration, -1).toLong()
-        mTextSize =
-            ta.getDimension(R.styleable.ProminentTabLayout_tl_textSize, sp2px(13f).toFloat())
+        mUnSelectSize =
+            ta.getDimension(
+                R.styleable.ProminentTabLayout_tl_textUnSelectSize,
+                sp2px(12f).toFloat()
+            )
+        mTextSelectSize =
+            ta.getDimension(R.styleable.ProminentTabLayout_tl_textSelectSize, mUnSelectSize)
         mTextSelectColor =
             ta.getColor(
                 R.styleable.ProminentTabLayout_tl_textSelectColor,
@@ -387,8 +453,6 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
             R.styleable.ProminentTabLayout_tl_textUnselectColor,
             Color.parseColor("#AAffffff")
         )
-        /*mTextBold =
-            ta.getInt(R.styleable.ProminentTabLayout_tl_textBold, ProminentTabLayout.TEXT_BOLD_NONE)*/
         mTextAllCaps = ta.getBoolean(R.styleable.ProminentTabLayout_tl_textAllCaps, false)
         mTabWidth =
             ta.getDimension(R.styleable.ProminentTabLayout_tl_tab_width, dp2px(-1f).toFloat())
@@ -411,6 +475,26 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
     private fun sp2px(sp: Float): Int {
         val scale: Float = resources.displayMetrics.scaledDensity
         return (sp * scale + 0.5f).toInt()
+    }
+
+    fun setOnTabSelectListener(block: (value: Int) -> Unit) {
+        mListener = block
+    }
+
+    private var mFragmentChangeManager: FragmentChangeManager? = null
+
+    /**
+     * 关联数据支持同时切换fragments
+     */
+    fun setTabData(
+        tabEntityList: MutableList<CustomTabEntity>,
+        fa: FragmentActivity,
+        containerViewId: Int,
+        fragments: MutableList<Fragment>
+    ) {
+        mFragmentChangeManager =
+            FragmentChangeManager(fa.supportFragmentManager, containerViewId, fragments)
+        this.tabEntityList = tabEntityList
     }
 
 }

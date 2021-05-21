@@ -121,7 +121,7 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
     private var mTabCount = 0
     private val mUnselectIndicatorDrawables = mutableListOf<GradientDrawable>()
     private var mLastTab = 0
-    var mCurrentTab = 0
+    var currentTab = 0
         set(value) {
             mLastTab = field
             field = value
@@ -205,7 +205,7 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
     }
 
     override fun onAnimationUpdate(animation: ValueAnimator) {
-        val currentTabView = mTabsContainer.getChildAt(mCurrentTab)
+        val currentTabView = mTabsContainer.getChildAt(currentTab)
         val p = animation.animatedValue as IndicatorPoint
         mIndicatorRect.left = p.left.toInt()
         mIndicatorRect.right = p.right.toInt()
@@ -221,23 +221,23 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
 
     override fun onSaveInstanceState(): Parcelable = Bundle().apply {
         putParcelable("instanceState", super.onSaveInstanceState())
-        putInt("mCurrentTab", mCurrentTab)
+        putInt("mCurrentTab", currentTab)
     }
 
     override fun onRestoreInstanceState(state: Parcelable) {
         var newState = state
         if (state is Bundle) {
-            mCurrentTab = state.getInt("mCurrentTab")
+            currentTab = state.getInt("mCurrentTab")
             newState = state.getParcelable("instanceState")!!
-            if (mCurrentTab != 0 && mTabsContainer.childCount > 0) {
-                updateTabSelection(mCurrentTab)
+            if (currentTab != 0 && mTabsContainer.childCount > 0) {
+                updateTabSelection(currentTab)
             }
         }
         super.onRestoreInstanceState(newState)
     }
 
     private fun calcIndicatorRect() {
-        val currentTabView = mTabsContainer.getChildAt(mCurrentTab)
+        val currentTabView = mTabsContainer.getChildAt(currentTab)
         val left = currentTabView.left.toFloat()
         val right = currentTabView.right.toFloat()
         mIndicatorRect.left = left.toInt()
@@ -267,10 +267,10 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
         for (i in 0 until mTabCount) {
             val tabView = mTabsContainer.getChildAt(i)
             tabView.findViewById<TextView>(R.id.tv_tab_title).run {
-                this.setTextColor(if (i == mCurrentTab) mTextSelectColor else mTextUnselectColor)
+                this.setTextColor(if (i == currentTab) mTextSelectColor else mTextUnselectColor)
                 this.setTextSize(
                     TypedValue.COMPLEX_UNIT_PX,
-                    if (i == mCurrentTab) mTextSelectSize else mUnSelectSize
+                    if (i == currentTab) mTextSelectSize else mUnSelectSize
                 )
                 if (mTextAllCaps) {
                     this.text = this.text.toString().toUpperCase()
@@ -281,7 +281,7 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
     }
 
     private fun calcOffset() {
-        val currentTabView = mTabsContainer.getChildAt(mCurrentTab)
+        val currentTabView = mTabsContainer.getChildAt(currentTab)
         mCurrentP.left = currentTabView.left.toFloat()
         mCurrentP.right = currentTabView.right.toFloat()
         val lastTabView = mTabsContainer.getChildAt(mLastTab)
@@ -317,8 +317,8 @@ class ProminentTabLayout : FrameLayout, AnimatorUpdateListener {
 
         tabView.setOnClickListener { v ->
             (v.tag as Int).also {
-                if (mCurrentTab != it) {
-                    mCurrentTab = it
+                if (currentTab != it) {
+                    currentTab = it
                     mListener?.invoke(it)
                 }
             }
